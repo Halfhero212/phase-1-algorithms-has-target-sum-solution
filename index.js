@@ -7,13 +7,25 @@ function hasTargetSum(array, target) {
 */
 
 /* 
-  Add your pseudocode here
-*/
+ Initialize an empty Set to store numbers we've already seen
+Iterate over each number in the array
+  Calculate the complement by subtracting the current number from the target
+  If the Set contains the complement, return true
+  Add the current number to the Set
+If no two numbers sum up to the target, return false
 
-/*
-  Add written explanation of your solution here
 */
-
+function hasTargetSum(array, target) {
+  const seenNumbers = new Set();
+  for (const number of array) {
+    const complement = target - number;
+    if (seenNumbers.has(complement)) {
+      return true;
+    }
+    seenNumbers.add(number);
+  }
+  return false;
+}
 // You can run `node index.js` to view these console logs
 if (require.main === module) {
   // add your own custom tests in here
